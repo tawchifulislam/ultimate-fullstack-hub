@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Specificity and Cascade Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    /* --- Demo 1: specificity battle --- */
+    /* element selector: 0 ids, 0 classes, 1 element -> lowest weight here */
+    p {
+      color: black;
+    }
+
+    /* class selector: 0 ids, 1 class, 0 elements -> beats the element selector */
+    .highlight {
+      color: blue;
+    }
+
+    /* id selector: 1 id, 0 classes, 0 elements -> beats everything above, no matter the order */
+    #special {
+      color: red;
+    }
+
+    /* --- Demo 2: source order tie-break --- */
+    /* Both rules below have equal specificity (1 class each), so the one written
+       later in the file wins: the box ends up green, not orange. */
+    .box {
+      background: orange;
+    }
+
+    .box {
+      background: green;
+    }
+
+    /* --- Demo 3: inheritance --- */
+    .parent {
+      color: purple;
+      /* color inherits: children get purple text unless overridden */
+      border: 2px solid #333;
+      /* border does NOT inherit: children get no border from this */
+      padding: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Specificity and Cascade Demo</h1>
+
+  <h2>Specificity battle</h2>
+  <p>This paragraph only matches the element selector, so it stays black.</p>
+  <p class="highlight">This paragraph also matches .highlight, so it turns blue.</p>
+  <p id="special" class="highlight">This paragraph matches p, .highlight, and #special. The id wins, so it turns red.
+  </p>
+
+  <h2>Source order tie-break</h2>
+  <div class="box">Both ".box" rules above have equal specificity. The later one (green) wins.</div>
+
+  <h2>Inheritance vs the cascade</h2>
+  <div class="parent">
+    Parent text is purple.
+    <p>This child paragraph inherits the purple color, but not the parent's border.</p>
+  </div>
+
+</body>
+
+</html>
