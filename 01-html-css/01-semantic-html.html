@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Semantic HTML Example</title>
+</head>
+
+<body>
+
+  <!-- header: the top of the page, logo and navigation -->
+  <header>
+    <h1>My Dev Blog</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- main: the unique content of the page, appears once -->
+  <main>
+
+    <!-- article: self-contained content that could be shared or syndicated on its own -->
+    <article>
+      <header>
+        <h2>Understanding Semantic HTML</h2>
+        <!-- time: a machine-readable date via the datetime attribute -->
+        <p>Published on <time datetime="2026-09-16">September 16, 2026</time></p>
+      </header>
+
+      <!-- figure + figcaption: an image and its caption as one self-contained unit -->
+      <figure>
+        <img src="../images/html-tags.png" alt="Diagram of common semantic HTML tags"
+          style="max-width: 600px; width: 100%; height: auto;" />
+        <figcaption>Fig 1. Common semantic landmarks in an HTML page</figcaption>
+      </figure>
+
+      <p>
+        Semantic HTML means choosing an element whose name carries the meaning
+        of its content, not just its styling.
+      </p>
+
+      <!-- section: a thematic sub-group, used here because it has its own heading -->
+      <section>
+        <h3>Why it matters for accessibility</h3>
+        <p>Screen reader users can navigate directly using these landmark tags.</p>
+      </section>
+    </article>
+
+    <!-- aside: related to the main content but not part of it -->
+    <aside>
+      <h3>Related Posts</h3>
+      <ul>
+        <li><a href="#">The Box Model Explained</a></li>
+        <li><a href="#">Flexbox vs Grid</a></li>
+      </ul>
+    </aside>
+
+  </main>
+
+  <!-- footer: the closing area of the page, copyright, contact, etc. -->
+  <footer>
+    <p>&copy; 2026 My Dev Blog. All rights reserved.</p>
+  </footer>
+
+</body>
+
+</html>
