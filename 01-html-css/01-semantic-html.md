@@ -52,4 +52,4 @@ Wrapping everything in divs ("div soup"), or using `<section>` without a heading
 
 ## Code Example
 
-See `01-semantic-html.html` in this folder.
+See [`01-semantic-html.html`](./01-semantic-html.html) in this folder.

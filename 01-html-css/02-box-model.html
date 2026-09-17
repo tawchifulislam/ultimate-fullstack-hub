@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Box Model Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    /* Demo 1: content-box (default) vs border-box */
+    .box {
+      width: 200px;
+      padding: 20px;
+      border: 8px solid #333;
+      margin-bottom: 20px;
+      background: #d9e8ff;
+    }
+
+    .content-box {
+      box-sizing: content-box;
+      /* default: width applies to the content area only */
+    }
+
+    .border-box {
+      box-sizing: border-box;
+      /* width includes padding and border */
+    }
+
+    /* Demo 2: margin collapsing */
+    .stack p {
+      background: #ffe8b3;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Box Model Demo</h1>
+
+  <h2>content-box vs border-box</h2>
+  <p>Both boxes below declare the same width (200px), padding (20px), and border (8px). Inspect them in DevTools to see
+    how their rendered width differs.</p>
+
+  <div class="box content-box">
+    content-box: rendered width is 200 + 20*2 (padding) + 8*2 (border) = 256px
+  </div>
+
+  <div class="box border-box">
+    border-box: rendered width stays 200px, padding and border are taken out of the content area instead of added on top
+  </div>
+
+  <h2>Margin collapsing</h2>
+  <p>These two paragraphs each have a 30px top and bottom margin, but the visible gap between them is 30px, not 60px,
+    because their margins collapse into one.</p>
+
+  <div class="stack">
+    <p>First paragraph.</p>
+    <p>Second paragraph.</p>
+  </div>
+
+</body>
+
+</html>
