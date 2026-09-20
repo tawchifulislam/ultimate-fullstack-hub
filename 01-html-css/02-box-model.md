@@ -29,6 +29,10 @@ With `box-sizing: border-box`, `width` and `height` include the padding and bord
 
 When two block-level elements are stacked vertically, their touching top and bottom margins can collapse into a single margin equal to the larger of the two, not the sum of both. This only applies to vertical margins in normal document flow; it does not happen to horizontal margins, and it does not happen between flex or grid children.
 
+### outline vs border
+
+`outline` draws a line around an element similar to `border`, but it is not part of the box model. Adding, removing, or resizing an outline never changes the element's size or pushes neighboring elements around, while `border` always does. This is also why browsers use an outline, not a border, to show focus states by default; it can be restyled without affecting layout.
+
 ### Debugging with DevTools
 
 Chrome DevTools' Elements panel shows a live, color-coded box model diagram for any selected element, so you can read the exact content, padding, border, and margin sizes instead of guessing.

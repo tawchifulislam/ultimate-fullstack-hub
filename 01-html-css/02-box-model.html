@@ -39,6 +39,28 @@
       margin-top: 30px;
       margin-bottom: 30px;
     }
+
+    /* Demo 3: outline vs border, both same width, laid out side by side */
+    .row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .swatch {
+      width: 150px;
+      height: 80px;
+      background: #d9e8ff;
+    }
+
+    .with-border {
+      border: 8px solid #333;
+      /* takes up space: pushes the next box in the row over */
+    }
+
+    .with-outline {
+      outline: 8px solid #333;
+      /* drawn outside the box, does not take up layout space */
+    }
   </style>
 </head>
 
@@ -65,6 +87,15 @@
   <div class="stack">
     <p>First paragraph.</p>
     <p>Second paragraph.</p>
+  </div>
+
+  <h2>outline vs border</h2>
+  <p>Both swatches below are the same 150x80px size. The border adds to the box and shifts layout; the outline sits on
+    top without changing anything's position.</p>
+
+  <div class="row">
+    <div class="swatch with-border">border</div>
+    <div class="swatch with-outline">outline</div>
   </div>
 
 </body>
