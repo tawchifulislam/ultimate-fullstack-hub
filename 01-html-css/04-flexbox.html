@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Flexbox Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    /* Demo 1: centering with justify-content and align-items */
+    .center-demo {
+      display: flex;
+      justify-content: center;
+      /* main axis: horizontal, since flex-direction is row by default */
+      align-items: center;
+      /* cross axis: vertical */
+      height: 120px;
+      background: #eee;
+      margin-bottom: 10px;
+    }
+
+    .center-demo .box {
+      width: 80px;
+      height: 60px;
+      background: #d9e8ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Demo 2: flex-grow ratios */
+    .grow-demo {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .grow-demo div {
+      background: #ffe8b3;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .grow-1 {
+      flex-grow: 1;
+    }
+
+    .grow-2 {
+      flex-grow: 2;
+    }
+
+    .grow-3 {
+      flex-grow: 1;
+    }
+
+    /* the three items above split extra space in a 1:2:1 ratio, not equally */
+
+    /* Demo 3: navbar pattern with space-between */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: white;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+    }
+
+    .navbar ul {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Demo 4: order, changes visual order without touching HTML order */
+    .order-demo {
+      display: flex;
+      gap: 10px;
+    }
+
+    .order-demo div {
+      background: #d3f8d3;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .order-demo .first-in-html {
+      order: 3;
+    }
+
+    .order-demo .second-in-html {
+      order: 1;
+    }
+
+    .order-demo .third-in-html {
+      order: 2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Flexbox Demo</h1>
+
+  <h2>Centering with justify-content and align-items</h2>
+  <div class="center-demo">
+    <div class="box">Centered</div>
+  </div>
+
+  <h2>flex-grow ratios</h2>
+  <p>These three items share extra space in a 1:2:1 ratio, not equally, because the middle one has flex-grow: 2.</p>
+  <div class="grow-demo">
+    <div class="grow-1">grow: 1</div>
+    <div class="grow-2">grow: 2</div>
+    <div class="grow-3">grow: 1</div>
+  </div>
+
+  <h2>Navbar with justify-content: space-between</h2>
+  <div class="navbar">
+    <strong>My Site</strong>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <h2>order: visual order vs HTML order</h2>
+  <p>In the HTML below, "First in HTML" comes first, but it visually appears last because of its order value.</p>
+  <div class="order-demo">
+    <div class="first-in-html">First in HTML (order: 3)</div>
+    <div class="second-in-html">Second in HTML (order: 1)</div>
+    <div class="third-in-html">Third in HTML (order: 2)</div>
+  </div>
+
+</body>
+
+</html>
