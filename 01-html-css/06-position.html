@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Position Example</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      padding-bottom: 120px;
+      /* leave room to scroll past the fixed button */
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    /* Demo 1: relative, nudged from its normal spot, ghost space stays */
+    .relative-demo {
+      background: #eee;
+      padding: 10px;
+    }
+
+    .relative-demo .nudged {
+      position: relative;
+      top: 10px;
+      left: 20px;
+      background: #d9e8ff;
+      padding: 10px;
+      display: inline-block;
+    }
+
+    /* Demo 2: absolute badge inside a relative card */
+    .card {
+      position: relative;
+      /* establishes the positioning context for the badge */
+      width: 220px;
+      padding: 16px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #d9534f;
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+
+    /* Demo 3: sticky section headings inside a scrollable list */
+    .scroll-box {
+      height: 200px;
+      overflow-y: auto;
+      /* sticky needs a scrolling ancestor to stick within */
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .scroll-box dt {
+      position: sticky;
+      top: 0;
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+    }
+
+    .scroll-box dd {
+      margin: 0;
+      padding: 6px 10px;
+      background: #fafafa;
+    }
+
+    /* Demo 4: fixed "back to top" button, relative to the viewport */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #333;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Position Demo</h1>
+
+  <h2>relative: nudged, but its original space is preserved</h2>
+  <div class="relative-demo">
+    Normal text before.
+    <span class="nudged">Nudged 10px down, 20px right</span>
+    Normal text after; notice it did not move to fill the original spot.
+  </div>
+
+  <h2>absolute: badge pinned inside a relative parent</h2>
+  <div class="card">
+    <span class="badge">New</span>
+    This card has position: relative, so the badge's position: absolute is
+    measured from this card's corner, not the whole page.
+  </div>
+
+  <h2>sticky: section headings stick while scrolling this box</h2>
+  <div class="scroll-box">
+    <dl>
+      <dt>A</dt>
+      <dd>Apple</dd>
+      <dd>Apricot</dd>
+      <dd>Avocado</dd>
+      <dt>B</dt>
+      <dd>Banana</dd>
+      <dd>Blueberry</dd>
+      <dt>C</dt>
+      <dd>Cherry</dd>
+      <dd>Coconut</dd>
+    </dl>
+  </div>
+
+  <h2>fixed: stays on screen while the whole page scrolls</h2>
+  <p>Scroll this page; the button in the bottom-right corner stays fixed to the viewport.</p>
+  <a class="back-to-top" href="#top">Back to top</a>
+
+</body>
+
+</html>
