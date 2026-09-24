@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chrome DevTools Debugging Practice</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+    }
+
+    section {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    code {
+      background: #f0f0f0;
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Chrome DevTools Debugging Practice</h1>
+  <p>Open DevTools (F12 or Cmd+Opt+I), go to the Console tab, then click each button below in order.</p>
+
+  <section>
+    <h2>1. Console methods</h2>
+    <p>Click, then check the Console tab for a table, a collapsible group, and a timing result.</p>
+    <button onclick="demoConsoleMethods()">Run console demo</button>
+  </section>
+
+  <section>
+    <h2>2. Conditional breakpoint practice</h2>
+    <p>
+      Open the <b>Sources</b> panel, find this file, locate the <code>processItems</code> function below.
+      Right-click the line number inside the loop and choose "Add conditional breakpoint."
+      Try the condition <code>i === 3</code>, then click the button.
+    </p>
+    <button onclick="processItems()">Run loop</button>
+  </section>
+
+  <section>
+    <h2>3. Step through a buggy function</h2>
+    <p>
+      This function has an intentional bug. Set a line-of-code breakpoint on the first line inside
+      <code>calculateDiscount</code>, click the button, then use Step Over / Step Into and watch the
+      Scope panel to find what's wrong before reading the fix in the code comments.
+    </p>
+    <button onclick="runBuggyDiscount()">Run buggy calculation</button>
+  </section>
+
+  <section>
+    <h2>4. debugger; statement</h2>
+    <p>With DevTools open, this pauses automatically the moment you click, no manual breakpoint needed.</p>
+    <button onclick="pauseHere()">Trigger debugger;</button>
+  </section>
+
+  <section>
+    <h2>5. Elements panel + $0</h2>
+    <p>
+      Right-click the box below, choose "Inspect." It becomes <code>$0</code> in the Console.
+      Try typing <code>$0.style.background = 'yellow'</code> in the Console.
+    </p>
+    <div id="inspect-me" style="padding: 12px; border: 2px dashed #999;">Inspect me!</div>
+  </section>
+
+  <script>
+    function demoConsoleMethods() {
+      console.table([
+        { name: "Ada", role: "Engineer" },
+        { name: "Grace", role: "Admiral" },
+      ]);
+
+      console.group("Grouped logs");
+      console.log("first detail");
+      console.log("second detail");
+      console.groupEnd();
+
+      console.time("loop timing");
+      let total = 0;
+      for (let i = 0; i < 100000; i++) total += i;
+      console.timeEnd("loop timing");
+    }
+
+    function processItems() {
+      const items = ["a", "b", "c", "d", "e", "f"];
+      for (let i = 0; i < items.length; i++) {
+        // Set your conditional breakpoint on this line: i === 3
+        console.log("processing", i, items[i]);
+      }
+    }
+
+    function calculateDiscount(price, percentOff) {
+      // Bug: this divides by 100 twice, once here and again below.
+      const discount = (price * percentOff) / 100;
+      const finalPrice = price - discount / 100; // <- the extra /100 is the bug
+      return finalPrice;
+      // Fix: remove the second "/ 100" on the finalPrice line.
+    }
+
+    function runBuggyDiscount() {
+      const result = calculateDiscount(100, 20); // expect 80, watch what you actually get
+      console.log("calculateDiscount(100, 20) returned:", result);
+    }
+
+    function pauseHere() {
+      console.log("about to pause");
+      debugger;
+      console.log("resumed after clicking play in DevTools");
+    }
+  </script>
+
+</body>
+
+</html>
