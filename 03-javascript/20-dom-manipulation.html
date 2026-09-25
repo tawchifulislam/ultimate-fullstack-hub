@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>DOM Manipulation Practice</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+    }
+
+    section {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 6px;
+      margin-right: 8px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      cursor: pointer;
+    }
+
+    li:hover {
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    .active {
+      background: yellow;
+    }
+
+    #output-static,
+    #output-live {
+      font-family: monospace;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>DOM Manipulation Practice</h1>
+
+  <section>
+    <h2>1. Build a to-do list (createElement, append, textContent, remove)</h2>
+    <input type="text" id="todo-input" placeholder="New item" />
+    <button onclick="addTodo()">Add</button>
+    <p><small>Click any item to remove it.</small></p>
+    <ul id="todo-list"></ul>
+  </section>
+
+  <section>
+    <h2>2. Static NodeList vs live HTMLCollection</h2>
+    <p>Three <code>.item</code> divs already exist below. Click the button to add a fourth one, then compare the two
+      counts.</p>
+    <div class="item">item 1</div>
+    <div class="item">item 2</div>
+    <div class="item">item 3</div>
+    <button onclick="addItemAndCompare()">Add a 4th .item and compare</button>
+    <p>querySelectorAll('.item').length (static): <span id="output-static">-</span></p>
+    <p>getElementsByClassName('item').length (live): <span id="output-live">-</span></p>
+  </section>
+
+  <section>
+    <h2>3. textContent vs innerHTML</h2>
+    <p>Same untrusted-looking string inserted two different ways:</p>
+    <button onclick="showEscaping()">Insert &lt;b&gt;bold?&lt;/b&gt; both ways</button>
+    <p>via textContent: <span id="via-text"></span></p>
+    <p>via innerHTML: <span id="via-html"></span></p>
+  </section>
+
+  <section>
+    <h2>4. classList toggle</h2>
+    <p>Click the box to toggle the <code>active</code> class (inspect it in DevTools while clicking).</p>
+    <div id="toggle-box" style="padding: 12px; border: 2px dashed #999; width: fit-content;"
+      onclick="this.classList.toggle('active')">
+      Click me
+    </div>
+  </section>
+
+  <script>
+    // Demo 1: to-do list
+    function addTodo() {
+      const input = document.getElementById("todo-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      const li = document.createElement("li");
+      li.textContent = text; // safe, even if someone types HTML-looking text
+      li.addEventListener("click", () => li.remove());
+
+      document.getElementById("todo-list").append(li);
+      input.value = "";
+    }
+
+    // Demo 2: static vs live collections
+    function addItemAndCompare() {
+      const staticList = document.querySelectorAll(".item"); // snapshot taken now
+      const liveList = document.getElementsByClassName("item"); // live reference
+
+      const section2 = document.querySelectorAll("section")[1];
+      const sectionButton = section2.querySelector("button");
+
+      const newItem = document.createElement("div");
+      newItem.className = "item";
+      newItem.textContent = "item 4 (added afterward)";
+      section2.insertBefore(newItem, sectionButton);
+
+      // staticList was captured BEFORE the new item was added, so it won't include it
+      document.getElementById("output-static").textContent = staticList.length;
+      // liveList is read AFTER, and updates automatically, so it does include it
+      document.getElementById("output-live").textContent = liveList.length;
+    }
+
+    // Demo 3: textContent escapes, innerHTML parses real markup
+    function showEscaping() {
+      const raw = "<b>bold?</b>";
+      document.getElementById("via-text").textContent = raw; // shown as literal text
+      document.getElementById("via-html").innerHTML = raw;    // rendered as actual bold
+    }
+  </script>
+
+</body>
+
+</html>
