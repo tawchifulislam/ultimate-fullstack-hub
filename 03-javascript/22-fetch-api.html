@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Fetch API Practice</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+    }
+
+    section {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin: 4px 8px 4px 0;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 6px;
+      margin-right: 8px;
+    }
+
+    pre.log {
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 8px;
+      min-height: 40px;
+      white-space: pre-wrap;
+    }
+
+    .note {
+      color: #a00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Fetch API Practice</h1>
+  <p class="note">Run <code>node 22-fetch-api-server.js</code> in a terminal first, then reload this page.</p>
+
+  <section>
+    <h2>1. Basic GET, reading the body with .json()</h2>
+    <button onclick="loadTodos()">Load todos</button>
+    <pre class="log" id="log-basic"></pre>
+  </section>
+
+  <section>
+    <h2>2. fetch does NOT reject on a 404</h2>
+    <button onclick="loadMissingTodo()">Fetch a todo that doesn't exist</button>
+    <pre class="log" id="log-404"></pre>
+  </section>
+
+  <section>
+    <h2>3. POST with headers and a JSON body</h2>
+    <input type="text" id="todo-title" placeholder="New todo title" />
+    <button onclick="addTodo()">Add todo</button>
+    <pre class="log" id="log-post"></pre>
+  </section>
+
+  <section>
+    <h2>4. AbortController: cancel an in-flight request</h2>
+    <button onclick="startSlowRequest()">Start slow request (3s)</button>
+    <button onclick="cancelSlowRequest()">Cancel</button>
+    <pre class="log" id="log-abort"></pre>
+  </section>
+
+  <script src="./22-fetch-api.js"></script>
+</body>
+
+</html>
