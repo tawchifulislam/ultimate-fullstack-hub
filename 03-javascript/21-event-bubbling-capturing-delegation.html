@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Event Bubbling, Capturing, Delegation Practice</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+    }
+
+    section {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin: 4px 8px 4px 0;
+      cursor: pointer;
+    }
+
+    .box {
+      padding: 20px;
+      border: 2px solid #999;
+    }
+
+    #outer {
+      background: #fce;
+    }
+
+    #middle {
+      background: #cef;
+    }
+
+    #inner {
+      background: #efc;
+    }
+
+    .log {
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 8px;
+      min-height: 60px;
+      white-space: pre-line;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    li:hover {
+      background: #eee;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Event Bubbling, Capturing, Delegation Practice</h1>
+
+  <section>
+    <h2>1. Bubbling order</h2>
+    <p>Click the innermost box. Watch the order handlers fire in the log below.</p>
+    <div id="outer" class="box">outer
+      <div id="middle" class="box">middle
+        <div id="inner" class="box">inner (click me)</div>
+      </div>
+    </div>
+    <p>Log:</p>
+    <div class="log" id="bubble-log"></div>
+    <button onclick="document.getElementById('bubble-log').textContent = ''">Clear log</button>
+  </section>
+
+  <section>
+    <h2>2. stopPropagation</h2>
+    <p>With this checkbox on, the inner handler calls stopPropagation, and the parent handlers never fire.</p>
+    <label><input type="checkbox" id="stop-toggle" /> stop propagation at inner</label>
+    <div id="outer2" class="box">outer2
+      <div id="inner2" class="box">inner2 (click me)</div>
+    </div>
+    <div class="log" id="stop-log"></div>
+    <button onclick="document.getElementById('stop-log').textContent = ''">Clear log</button>
+  </section>
+
+  <section>
+    <h2>3. Event delegation: one listener handles current AND future items</h2>
+    <button onclick="addListItem()">Add a new item</button>
+    <button onclick="document.getElementById('delegate-log').textContent = ''">Clear log</button>
+    <ul id="delegate-list">
+      <li>Item 1 <span class="badge">(span)</span></li>
+      <li>Item 2 <span class="badge">(span)</span></li>
+      <li>Item 3 <span class="badge">(span)</span></li>
+    </ul>
+    <p>Click any item, including the "(span)" text inside it, or one you add afterward:</p>
+    <div class="log" id="delegate-log"></div>
+  </section>
+
+  <script>
+    // Demo 1: bubbling order
+    function logBubble(msg) {
+      const log = document.getElementById("bubble-log");
+      log.textContent += msg + "\n";
+    }
+    document.getElementById("outer").addEventListener("click", () => logBubble("3: outer handler (bubbling)"));
+    document.getElementById("middle").addEventListener("click", () => logBubble("2: middle handler (bubbling)"));
+    document.getElementById("inner").addEventListener("click", () => logBubble("1: inner handler (target phase)"));
+
+    // Demo 2: stopPropagation toggle
+    function logStop(msg) {
+      const log = document.getElementById("stop-log");
+      log.textContent += msg + "\n";
+    }
+    document.getElementById("outer2").addEventListener("click", () => logStop("outer2 handler ran"));
+    document.getElementById("inner2").addEventListener("click", (event) => {
+      logStop("inner2 handler ran");
+      if (document.getElementById("stop-toggle").checked) {
+        event.stopPropagation();
+        logStop("(stopPropagation called, outer2 will NOT run)");
+      }
+    });
+
+    // Demo 3: event delegation, using closest() and target vs currentTarget
+    let itemCount = 3;
+    function addListItem() {
+      itemCount++;
+      const li = document.createElement("li");
+      li.innerHTML = `Item ${itemCount} <span class="badge">(span)</span>`;
+      document.getElementById("delegate-list").append(li);
+    }
+
+    document.getElementById("delegate-list").addEventListener("click", (event) => {
+      const li = event.target.closest("li");
+      if (!li) return;
+      const log = document.getElementById("delegate-log");
+      log.textContent +=
+        `clicked "${li.textContent.trim()}", ` +
+        `event.target was a <${event.target.tagName.toLowerCase()}>, ` +
+        `event.currentTarget was the <ul>\n`;
+    });
+  </script>
+
+</body>
+
+</html>
