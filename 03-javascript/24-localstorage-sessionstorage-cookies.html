@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>LocalStorage, SessionStorage, Cookies Practice</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 700px;
+    }
+
+    section {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 6px 12px;
+      margin: 4px 8px 4px 0;
+      cursor: pointer;
+    }
+
+    input {
+      padding: 6px;
+      margin-right: 8px;
+    }
+
+    pre.log {
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 8px;
+      min-height: 30px;
+      white-space: pre-wrap;
+    }
+
+    .note {
+      color: #a00;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>LocalStorage, SessionStorage, Cookies Practice</h1>
+
+  <section>
+    <h2>1. localStorage: setItem/getItem, and the object bug</h2>
+    <input type="text" id="ls-value" placeholder="value to store" value="hello" />
+    <button onclick="setLS()">setItem</button>
+    <button onclick="getLS()">getItem</button>
+    <button onclick="removeLS()">removeItem</button>
+    <br />
+    <button onclick="storeObjectWrong()">Store an object WITHOUT JSON.stringify (the bug)</button>
+    <button onclick="storeObjectRight()">Store an object WITH JSON.stringify (the fix)</button>
+    <pre class="log" id="ls-log"></pre>
+  </section>
+
+  <section>
+    <h2>2. sessionStorage: same API, different lifetime and scope</h2>
+    <p>Same methods as localStorage. Open this same file in a second tab: sessionStorage will NOT show this value there,
+      localStorage will.</p>
+    <input type="text" id="ss-value" placeholder="value to store" value="tab-only" />
+    <button onclick="setSS()">setItem</button>
+    <button onclick="getSS()">getItem</button>
+    <pre class="log" id="ss-log"></pre>
+  </section>
+
+  <section>
+    <h2>3. Cookies via document.cookie</h2>
+    <input type="text" id="cookie-name" placeholder="name" value="username" />
+    <input type="text" id="cookie-value" placeholder="value" value="Ada" />
+    <button onclick="setCookie()">Set cookie</button>
+    <button onclick="readCookies()">Read document.cookie (raw)</button>
+    <button onclick="readOneCookie()">Read just "username" (parsed)</button>
+    <pre class="log" id="cookie-log"></pre>
+  </section>
+
+  <section>
+    <h2>4. The storage event</h2>
+    <p class="note">Real use: this fires in OTHER tabs when localStorage changes, never in the tab that made the change.
+      Since this is one page, the button below manually dispatches a synthetic event so you can see the listener code
+      run.</p>
+    <button onclick="simulateStorageEvent()">Simulate a storage event from "another tab"</button>
+    <pre class="log" id="storage-event-log"></pre>
+  </section>
+
+  <script src="./24-localstorage-sessionstorage-cookies.js"></script>
+</body>
+
+</html>
