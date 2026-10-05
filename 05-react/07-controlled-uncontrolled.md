@@ -80,4 +80,4 @@ function UncontrolledForm({ onSubmitName }: { onSubmitName: (name: string) => vo
 
 ## Code Example
 
-See [`49-controlled-uncontrolled.tsx`](./49-controlled-uncontrolled.tsx) in this folder.
+See [`07-controlled-uncontrolled.tsx`](./07-controlled-uncontrolled.tsx) in this folder.

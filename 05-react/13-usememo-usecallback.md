@@ -66,4 +66,4 @@ Wrapping `handleSave` in `useCallback` with the right dependencies keeps its ref
 
 ## Code Example
 
-See [`55-usememo-usecallback.tsx`](./55-usememo-usecallback.tsx) in this folder.
+See [`13-usememo-usecallback.tsx`](./13-usememo-usecallback.tsx) in this folder.

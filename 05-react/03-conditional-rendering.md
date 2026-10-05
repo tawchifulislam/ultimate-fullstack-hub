@@ -95,4 +95,4 @@ function Tooltip({ message }: { message: string | null }) {
 
 ## Code Example
 
-See [`45-conditional-rendering.tsx`](./45-conditional-rendering.tsx) in this folder.
+See [`03-conditional-rendering.tsx`](./03-conditional-rendering.tsx) in this folder.

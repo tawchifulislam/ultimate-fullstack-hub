@@ -93,4 +93,4 @@ Rendering this with `showExtra` first `true` then `false` throws `"Rendered fewe
 
 ## Code Example
 
-See [`54-custom-hooks.tsx`](./54-custom-hooks.tsx) in this folder.
+See [`12-custom-hooks.tsx`](./12-custom-hooks.tsx) in this folder.

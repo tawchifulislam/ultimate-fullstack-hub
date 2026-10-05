@@ -91,4 +91,4 @@ setCount((prev) => prev + 1); // reads the real current value every time
 
 ## Code Example
 
-See [`50-useeffect-lifecycle.tsx`](./50-useeffect-lifecycle.tsx) in this folder.
+See [`08-useeffect-lifecycle.tsx`](./08-useeffect-lifecycle.tsx) in this folder.

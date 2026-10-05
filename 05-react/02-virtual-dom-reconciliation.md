@@ -75,4 +75,4 @@ node dist/44-virtual-dom-reconciliation.js
 
 ## Code Example
 
-See [`44-virtual-dom-reconciliation.tsx`](./44-virtual-dom-reconciliation.tsx) in this folder.
+See [`02-virtual-dom-reconciliation.tsx`](./02-virtual-dom-reconciliation.tsx) in this folder.

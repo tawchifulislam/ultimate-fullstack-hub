@@ -91,4 +91,4 @@ React's events are still regular DOM events under the hood (React attaches a sma
 
 ## Code Example
 
-See [`47-event-handling.tsx`](./47-event-handling.tsx) in this folder.
+See [`05-event-handling.tsx`](./05-event-handling.tsx) in this folder.

@@ -95,4 +95,4 @@ The Context API topic solved passing a *value* deeply through a tree. Compositio
 
 ## Code Example
 
-See [`52-component-composition.tsx`](./52-component-composition.tsx) in this folder.
+See [`10-component-composition.tsx`](./10-component-composition.tsx) in this folder.

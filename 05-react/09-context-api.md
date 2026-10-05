@@ -107,4 +107,4 @@ An unrelated re-render of the provider (triggered by some other piece of state n
 
 ## Code Example
 
-See [`51-context-api.tsx`](./51-context-api.tsx) in this folder.
+See [`09-context-api.tsx`](./09-context-api.tsx) in this folder.

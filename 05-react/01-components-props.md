@@ -124,4 +124,4 @@ A component must never modify the props object it receives. React relies on this
 
 ## Code Example
 
-See [`43-components-props.tsx`](./43-components-props.tsx) in this folder.
+See [`01-components-props.tsx`](./01-components-props.tsx) in this folder.

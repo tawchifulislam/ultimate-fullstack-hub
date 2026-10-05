@@ -68,4 +68,4 @@ If a list is strictly static (never reordered, filtered, or had items inserted a
 
 ## Code Example
 
-See [`46-keys-and-lists.tsx`](./46-keys-and-lists.tsx) in this folder.
+See [`04-keys-and-lists.tsx`](./04-keys-and-lists.tsx) in this folder.

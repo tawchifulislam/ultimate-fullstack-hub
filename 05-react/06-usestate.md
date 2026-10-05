@@ -99,4 +99,4 @@ const [value] = useState(() => computeExpensive());
 
 ## Code Example
 
-See [`48-usestate.tsx`](./48-usestate.tsx) in this folder.
+See [`06-usestate.tsx`](./06-usestate.tsx) in this folder.
