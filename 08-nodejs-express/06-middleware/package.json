@@ -1,0 +1,8 @@
+{
+  "name": "06-middleware",
+  "private": true,
+  "dependencies": {
+    "express": "^5.3.0",
+    "morgan": "^1.12.1"
+  }
+}
