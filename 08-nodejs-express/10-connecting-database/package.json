@@ -1,0 +1,15 @@
+{
+  "name": "10-connecting-database",
+  "private": true,
+  "dependencies": {
+    "@prisma/adapter-better-sqlite3": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "express": "^5.3.0",
+    "mongoose": "^9.11.2"
+  },
+  "devDependencies": {
+    "@prisma/prisma-schema-wasm": "8.1.0-1.d1b3f377ca835d73fd50954a5e22128b9ebdd6b8",
+    "prisma": "7.10.1",
+    "tsx": "^4.23.15"
+  }
+}

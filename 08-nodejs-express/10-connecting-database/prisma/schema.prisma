@@ -1,0 +1,29 @@
+// schema.prisma
+// Prisma's own schema language. Unlike a Mongoose schema (JavaScript code
+// that validates documents in a schemaless database), this file describes
+// real relational tables, and a generated client is built from it.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  posts Post[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}
