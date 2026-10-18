@@ -14,7 +14,7 @@ auth-app.js        -> an Express app: login, a bearer-token middleware, role che
 package.json
 ```
 
-This topic builds directly on three earlier ones. The token check is a middleware (Topic 76), a rejected request is a status code and a JSON error (Topics 77 and 78), and the signing secret is read from the environment and the app refuses to start without it (Topic 79). Two neighbouring topics are deliberately left to later: how passwords are stored (Topic 84, Password Hashing) and how a browser-held token is attacked (Topics 86 and 87, XSS and CSRF).
+This topic builds directly on three earlier ones. The token check is a middleware (Topic 76), a rejected request is a status code and a JSON error (Topics 77 and 78), and the signing secret is read from the environment and the app refuses to start without it (Topic 79). Two neighbouring topics are deliberately left to later: how passwords are stored (Topic 84, Password Hashing) and how a browser-held token is attacked (Topics 85 and 86, XSS and CSRF).
 
 ### Authentication and authorization are two questions
 
@@ -149,7 +149,7 @@ That printed a 64-character string when tested. Put it in the environment (Topic
 
 ### Where the client keeps the token
 
-The server side is only half of the design. A browser app has to store the token somewhere, and the usual choices (a JavaScript-readable store such as `localStorage`, or an `httpOnly` cookie) trade exposure to script injection against exposure to cross-site requests. That trade-off is the subject of Topics 86 (XSS) and 87 (CSRF), and nothing in this folder tests either option, so treat it as a pointer to those topics rather than a finding.
+The server side is only half of the design. A browser app has to store the token somewhere, and the usual choices (a JavaScript-readable store such as `localStorage`, or an `httpOnly` cookie) trade exposure to script injection against exposure to cross-site requests. That trade-off is the subject of Topics 85 (XSS) and 86 (CSRF), and nothing in this folder tests either option, so treat it as a pointer to those topics rather than a finding.
 
 ### Practical tips
 
@@ -174,7 +174,7 @@ The server side is only half of the design. A browser app has to store the token
 2. In `jwt-failures.js`, add a case that verifies a token with `{ clockTolerance: 5 }` just after it expires, and describe what changes.
 3. Add a `requireRole` case to `auth-app.js` that lets either `admin` or `author` through to a new `/drafts` route, and test it with both tokens using `curl`.
 4. Make logout survive a restart by writing revoked `jti` values to a file (or a small JSON database) and loading it at startup. Then explain what still would not work with two server instances.
-5. Change the middleware to read the token from a cookie instead of the `Authorization` header, then read Topics 86 and 87 and list what new risks that choice introduces.
+5. Change the middleware to read the token from a cookie instead of the `Authorization` header, then read Topics 85 and 86 and list what new risks that choice introduces.
 
 ## Code Example
 
