@@ -1,0 +1,25 @@
+{
+  "name": "03-xss",
+  "private": true,
+  "scripts": {
+    "vulnerable": "node vulnerable-app.js",
+    "safe": "node safe-app.js",
+    "lab": "node lab.js",
+    "dom-sinks": "node dom-sinks-lab.js",
+    "contexts": "node contexts-lab.js",
+    "blocklist": "node blocklist-filter-demo.js",
+    "ejs": "node ejs-escaping.js",
+    "dompurify": "node dompurify-lab.js",
+    "react": "node react-escaping.js",
+    "csp": "node csp-lab.js"
+  },
+  "dependencies": {
+    "dompurify": "^3.4.17",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "playwright-core": "^1.64.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
