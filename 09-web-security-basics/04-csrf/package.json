@@ -1,0 +1,19 @@
+{
+  "name": "04-csrf",
+  "private": true,
+  "scripts": {
+    "bank": "node bank-app.js",
+    "evil": "node attacker-site.js",
+    "attacks": "node lab-attacks.js",
+    "defenses": "node lab-defenses.js",
+    "tokens": "node token-helpers-demo.js",
+    "library": "node csrf-csrf-demo.js",
+    "lax-post": "node lax-post-window.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "csrf-csrf": "^4.0.3",
+    "express": "^5.3.0",
+    "playwright-core": "^1.64.1"
+  }
+}
