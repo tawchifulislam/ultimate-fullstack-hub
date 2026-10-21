@@ -1,0 +1,21 @@
+{
+  "name": "caching",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Topic 88: caching with an in-process cache, HTTP caching headers and ETags, and Redis",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning http-cache-app.js",
+    "cache-aside-demo": "node --disable-warning=ExperimentalWarning cache-aside-demo.js",
+    "stampede-demo": "node --disable-warning=ExperimentalWarning stampede-demo.js",
+    "lru-demo": "node --disable-warning=ExperimentalWarning lru-demo.js",
+    "http-cache-check": "node --disable-warning=ExperimentalWarning http-cache-check.js",
+    "browser-cache-lab": "node --disable-warning=ExperimentalWarning browser-cache-lab.js",
+    "leak-demo": "node --disable-warning=ExperimentalWarning leak-demo.js",
+    "redis-demo": "node --disable-warning=ExperimentalWarning redis-demo.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "playwright-core": "^1.64.1",
+    "redis": "^5.12.1"
+  }
+}
