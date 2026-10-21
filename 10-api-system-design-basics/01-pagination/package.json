@@ -1,0 +1,21 @@
+{
+  "name": "pagination",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Topic 87: offset and cursor pagination over a 100,000-row SQLite table, with an Express 5 API",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning pagination-app.js",
+    "offset-demo": "node --disable-warning=ExperimentalWarning offset-demo.js",
+    "offset-cost": "node --disable-warning=ExperimentalWarning offset-cost.js",
+    "cursor-demo": "node --disable-warning=ExperimentalWarning cursor-demo.js",
+    "drift-demo": "node --disable-warning=ExperimentalWarning drift-demo.js",
+    "ties-demo": "node --disable-warning=ExperimentalWarning ties-demo.js",
+    "walk-all-pages": "node --disable-warning=ExperimentalWarning walk-all-pages.js",
+    "unbounded-demo": "node --disable-warning=ExperimentalWarning unbounded-demo.js",
+    "api-check": "node --disable-warning=ExperimentalWarning api-check.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "zod": "^4.6.7"
+  }
+}
