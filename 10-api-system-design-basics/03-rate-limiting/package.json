@@ -1,0 +1,19 @@
+{
+  "name": "rate-limiting",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Topic 89: rate limiting algorithms, Express 429 middleware, proxy-aware client IPs, login throttling, Redis limiters",
+  "scripts": {
+    "algorithms-demo": "node algorithms-demo.js",
+    "http-demo": "node http-demo.js",
+    "proxy-ip-demo": "node proxy-ip-demo.js",
+    "login-demo": "node login-demo.js",
+    "distributed-demo": "node distributed-demo.js",
+    "library-demo": "node library-demo.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.1",
+    "redis": "^5.12.1"
+  }
+}
